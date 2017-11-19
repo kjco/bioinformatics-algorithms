@@ -1,4 +1,13 @@
-
+# Programming solution for:
+#   Reconstruct a String from its k-mer Composition
+#   http://rosalind.info/problems/ba3h/
+#
+# **String Reconstruction Problem**
+# 
+# Reconstruct a string from its k-mer composition.
+#   - Given: An integer k followed by a list of k-mers Patterns.
+#   - Return: A string Text with k-mer composition equal to Patterns. (If multiple
+#     answers exist, you may return any one.)
 
 
 def out_node(input,new_input):
@@ -61,8 +70,6 @@ while decide(d):
         if d[cycle[i]]:
             k = cycle[i]
             new_cycle = cycle[i:len(cycle)]+cycle[0:i]
-            #print new_cycle
-            #print k
             break
     ki = k
     cycle = [ki]
@@ -73,10 +80,8 @@ while decide(d):
         if k == ki:
             break
         cycle.append(k)
-        #print d
 
     cycle = new_cycle + cycle
-    #print cycle
 
 
 #break_point = None

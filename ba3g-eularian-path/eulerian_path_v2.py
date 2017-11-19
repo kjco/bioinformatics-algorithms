@@ -1,7 +1,19 @@
+# Programming solution for:
+#   Find an Eulerian Path in a Graph 
+#   http://rosalind.info/problems/ba3g
+#
+# In "Find an Eulerian Cycle in a Graph", we defined an Eulerian cycle. A path
+# that traverses each edge of a graph exactly once (but does not necessarily
+# return to its starting node is called an Eulerian path.
+#
+# **Eulerian Path Problem**
+#
+# Find an Eulerian path in a graph.
+#   - Given: A directed graph that contains an Eulerian path, where the graph is
+#     given in the form of an adjacency list.
+#   - Return: An Eulerian path in this graph.
 
-
-
-def out_node(input,new_input):
+def out_node(input, new_input):
     for k,v in input.iteritems():
         if k not in new_input:
             return k
@@ -41,7 +53,6 @@ first_node = out_node(d, in_d)
 
 #d[last_node] = [first_node]
 # the above is wrong, please beware!
-
 d[last_node].append(first_node)
 
 def decide(input):
@@ -60,8 +71,6 @@ while decide(d):
         if d[cycle[i]]:
             k = cycle[i]
             new_cycle = cycle[i:len(cycle)]+cycle[0:i]
-            #print new_cycle
-            #print k
             break
     ki = k
     cycle = [ki]
@@ -72,12 +81,10 @@ while decide(d):
         if k == ki:
             break
         cycle.append(k)
-        #print d
 
     cycle = new_cycle + cycle
-    #print cycle
 
-#print cycle
+
 for i in range(len(cycle)-1):
     if cycle[i] == last_node and cycle[i+1] == first_node:
         break_point = i

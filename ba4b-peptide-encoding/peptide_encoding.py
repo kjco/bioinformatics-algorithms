@@ -1,3 +1,22 @@
+# Programming solution for:
+#   Find Substrings of a Genome Encoding a Given Amino Acid String
+#   http://rosalind.info/problems/ba4b/
+#
+# There are three different ways to divide a DNA string into codons for
+# translation, one starting at each of the first three starting positions of
+# the string. These different ways of dividing a DNA string into codons are
+# called reading frames. Since DNA is double-stranded, a genome has six reading
+# frames (three on each strand), as shown in Figure 1.
+# 
+# We say that a DNA string Pattern encodes an amino acid string Peptide if the
+# RNA string transcribed from either Pattern or its reverse complement Pattern
+# translates into Peptide.
+#
+# **Peptide Encoding Problem**
+#
+# Find substrings of a genome encoding a given amino acid sequence.
+#   - Given: A DNA string Text and an amino acid string Peptide.
+#   - Return: All substrings of Text encoding Peptide (if any such substrings exist).
 
 codon_dict = {"AAA":"K","AAC":"N","AAG":"K","AAU":"N","ACA":"T","ACC":"T","ACG":"T","ACU":"T","AGA":"R","AGC":"S","AGG":"R","AGU":"S","AUA":"I","AUC":"I","AUG":"M","AUU":"I","CAA":"Q","CAC":"H","CAG":"Q","CAU":"H","CCA":"P","CCC":"P","CCG":"P","CCU":"P","CGA":"R","CGC":"R","CGG":"R","CGU":"R","CUA":"L","CUC":"L","CUG":"L","CUU":"L","GAA":"E","GAC":"D","GAG":"E","GAU":"D","GCA":"A","GCC":"A","GCG":"A","GCU":"A","GGA":"G","GGC":"G","GGG":"G","GGU":"G","GUA":"V","GUC":"V","GUG":"V","GUU":"V","UAA":"","UAC":"Y","UAG":"","UAU":"Y","UCA":"S","UCC":"S","UCG":"S","UCU":"S","UGA":"","UGC":"C","UGG":"W","UGU":"C","UUA":"L","UUC":"F","UUG":"L","UUU":"F"}
 amino_acid_list = []

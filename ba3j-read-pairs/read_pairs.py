@@ -1,3 +1,31 @@
+# Programming solution for:
+#   Reconstruct a String from its Paired Composition
+#   http://rosalind.info/problems/ba3j
+# Since increasing read length presents a difficult experimental problem,
+# biologists have suggested an indirect way of increasing read length by
+# generating read-pairs, which are pairs of reads separated by a fixed distance
+# d in the genome.
+# 
+# You can think about a read-pair as a long "gapped" read of length k + d + k
+# whose first and last k-mers are known but whose middle segment of length d is
+# unknown. Nevertheless, read-pairs contain more information than k-mers alone,
+# and so we should be able to use them to improve our assemblies. If only you
+# could infer the nucleotides in the middle segment of a read-pair, you would
+# immediately increase the read length from k to 2 * k + d.
+# 
+# Given a string Text, a (k,d)-mer is a pair of k-mers in Text separated by
+# distance d. We use the notation (Pattern1|Pattern2) to refer to a a (k,d)-mer
+# whose k-mers are Pattern1 and Pattern2. The (k,d)-mer composition of Text,
+# denoted PairedCompositionk,d(Text), is the collection of all (k,d)- mers in
+# Text (including repeated (k,d)-mers).
+#
+# **String Reconstruction from Read-Pairs Problem**
+# 
+# Reconstruct a string from its paired composition.
+#   - Given: Integers k and d followed by a collection of paired k-mers PairedReads.
+#   - Return: A string Text with (k, d)-mer composition equal to PairedReads. (If
+#     multiple answers exist, you may return any one.)
+
 
 #pattern_list = ['GAGA|TTGA','TCGT|GATG','CGTG|ATGT','TGGT|TGAG','GTGA|TGTT','GTGG|GTGA','TGAG|GTTG','GGTC|GAGA','GTCG|AGAT']
 pattern_list = [line.strip() for line in open('dataset_58_14.txt','r')]
@@ -16,12 +44,6 @@ for kmer in pattern_list:
     else:
         d[prefix].append(suffix)
 
-#print d
-
-
-
-
-
 def out_node(input,new_input):
     for k,v in input.iteritems():
         if k not in new_input:
@@ -35,16 +57,6 @@ def in_node(input, new_input):
             return k
         elif len(input[k]) < new_input[k]:
             return k
-
-#d = {0:[2],1:[3],2:[1],3:[0,4],6:[3,7],7:[8],8:[9],9:[6]}
-
-##d=dict()
-##with open('dataset_57_6.txt','r') as f:
-##   for line in f:
-##       chunks = line.strip().split('->')
-##       key = chunks[0].strip()
-##       value = [x.strip() for x in chunks[1].split(',')]
-##       d[key] = value
 
 in_d = dict()
 
@@ -82,8 +94,6 @@ while decide(d):
         if d[cycle[i]]:
             k = cycle[i]
             new_cycle = cycle[i:len(cycle)]+cycle[0:i]
-            #print new_cycle
-            #print k
             break
     ki = k
     cycle = [ki]
@@ -94,11 +104,8 @@ while decide(d):
         if k == ki:
             break
         cycle.append(k)
-        #print d
 
     cycle = new_cycle + cycle
-#print cycle
-
 
 #break_point = None
 for i in range(len(cycle)-1):
@@ -121,10 +128,3 @@ print '====='
 #print alt_string[len(alt_string)-2*klen:len(alt_string)]
 print string + alt_string[len(alt_string)-2*klen-dlen+2:len(alt_string)]
 
-##string = output_cycle[0]
-##for i in range(len(output_cycle)-1):
-##    n = output_cycle[i+1][-1]
-##    string = string + n
-##
-##print string
-###print '->'.join(output_cycle)
